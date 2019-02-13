@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class PlayerScore : MonoBehaviour
 {
-    public PlayerScore main;
+    public static PlayerScore main;
     public float score;
   public Text scoreUI;
+    public float modifier = 1;
+
     private void Start()
     {
         main = this;
@@ -28,12 +30,11 @@ public class PlayerScore : MonoBehaviour
 
   private void FixedUpdate()
     {
-        score += PlayerSpeed.main.PlayerSpeedProperty * Time.fixedDeltaTime;
+        score += (PlayerSpeed.main.PlayerSpeedProperty * modifier) * Time.fixedDeltaTime;
     }
 
     private void OnDestroy()
     {
-        Debug.Log("Setting score");
         PlayerPrefs.SetFloat("PlayerScore", score);
     }
 }
