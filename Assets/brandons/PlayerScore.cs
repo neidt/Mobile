@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScore : MonoBehaviour
 {
     public PlayerScore main;
     public float score;
-
+  public Text scoreUI;
     private void Start()
     {
         main = this;
@@ -20,7 +21,12 @@ public class PlayerScore : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+  private void Update()
+  {
+    scoreUI.text = ((int)score).ToString();
+  }
+
+  private void FixedUpdate()
     {
         score += PlayerSpeed.main.PlayerSpeedProperty * Time.fixedDeltaTime;
     }

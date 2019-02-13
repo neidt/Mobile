@@ -30,7 +30,7 @@ public class PlayerTurn : MonoBehaviour
     }
 
     public Vector3 touchStart;
-    public float minPixleDifference;
+    public float minPixleDifference = 10;
 
     private void Update()
     {

@@ -6,6 +6,6 @@ public class Die : MonoBehaviour
 {
   public static void PlayerDie()
   {
-    Debug.Log("Player Died");
+    UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
   }
 }
