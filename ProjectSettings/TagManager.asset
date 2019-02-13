@@ -9,6 +9,7 @@ TagManager:
   - RightTurn
   - LeftTurn
   - GhostPickup
+  - PickupSpawn
   layers:
   - Default
   - TransparentFX
