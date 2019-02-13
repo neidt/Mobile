@@ -11,4 +11,11 @@ public class DoublePointsPowerUp : MonoBehaviour
             other.gameObject.AddComponent<DoublePointsEffect>();
         }
     }
+  private void OnCollisionEnter(Collision collision)
+  {
+    if (collision.gameObject.GetComponent<PlayerScore>() != null)
+    {
+      collision.gameObject.AddComponent<DoublePointsEffect>();
+    }
+  }
 }

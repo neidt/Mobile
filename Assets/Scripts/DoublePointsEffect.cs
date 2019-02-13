@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DoublePointsEffect : MonoBehaviour
 {
-    public float duration;
+    public float duration = 5;
     PlayerScore myScore;
+
     private void Start()
     {
         myScore = GetComponent<PlayerScore>();

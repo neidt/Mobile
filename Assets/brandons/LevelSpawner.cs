@@ -63,19 +63,19 @@ public class LevelSpawner : MonoBehaviour
             powerupSpawnRight = newSection.transform.Find("PowerupSpawnRight");
             powerupSpawnLeft = newSection.transform.Find("PowerupSpawnLeft");
 
-            int randomRoll = Random.Range(0, 30);
-            if (randomRoll < 10)
-            {
-                GameObject newGhost = Instantiate(ghostPowerup, powerupSpawnLeft.position, Quaternion.identity, newSection.transform);
-            }
-            if (randomRoll > 10 && randomRoll < 20)
-            {
-                GameObject newGhost = Instantiate(ghostPowerup, powerupSpawnCenter.position, Quaternion.identity, newSection.transform);
-            }
-            if (randomRoll > 20)
-            {
-                GameObject newGhost = Instantiate(ghostPowerup, powerupSpawnRight.position, Quaternion.identity,newSection.transform);
-            }
+            //int randomRoll = Random.Range(0, 30);
+            //if (randomRoll < 10)
+            //{
+            //    GameObject newGhost = Instantiate(ghostPowerup, powerupSpawnLeft.position, Quaternion.identity, newSection.transform);
+            //}
+            //if (randomRoll > 10 && randomRoll < 20)
+            //{
+            //    GameObject newGhost = Instantiate(ghostPowerup, powerupSpawnCenter.position, Quaternion.identity, newSection.transform);
+            //}
+            //if (randomRoll > 20)
+            //{
+            //    GameObject newGhost = Instantiate(ghostPowerup, powerupSpawnRight.position, Quaternion.identity,newSection.transform);
+            //}
 
         }
         else if (randomChoice < 90)
