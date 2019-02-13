@@ -503,6 +503,22 @@ PrefabInstance:
       propertyPath: m_Height
       value: 1.6
       objectReference: {fileID: 0}
+    - target: {fileID: 928416436, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+      propertyPath: matBlack
+      value: 
+      objectReference: {fileID: 2100000, guid: afa5bdbc4ef1f4e46905ff91f5729b7c, type: 2}
+    - target: {fileID: 928416436, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+      propertyPath: matGrey
+      value: 
+      objectReference: {fileID: 2100000, guid: afa5bdbc4ef1f4e46905ff91f5729b7c, type: 2}
+    - target: {fileID: 928416436, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+      propertyPath: ethanGrey
+      value: 
+      objectReference: {fileID: 2100000, guid: 621e901dcf5ebaf46bce29d18f67194c, type: 2}
+    - target: {fileID: 13783410, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 621e901dcf5ebaf46bce29d18f67194c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
 --- !u!1 &170076733
@@ -950,6 +966,8 @@ MonoBehaviour:
   dodgeSpeed: 5
   rollSpeed: 6.28
   inputType: 1
+  matGrey: {fileID: 0}
+  ethanGrey: {fileID: 0}
   swipeMove: 2
   minSwipeDistance: 2
 --- !u!1 &521382363

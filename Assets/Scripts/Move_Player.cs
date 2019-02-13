@@ -1,4 +1,6 @@
-﻿using System;
+﻿//@author natalie eidt
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,6 +47,9 @@ public class Move_Player : MonoBehaviour
     int crouchHash = Animator.StringToHash("isCrouching");
     int runHash = Animator.StringToHash("isRunning");
 
+    public Material matGrey;
+    public Material ethanGrey;
+
     /// <summary>
     /// How much force should be applied in the horizontal axis
     /// </summary>
@@ -90,7 +95,7 @@ public class Move_Player : MonoBehaviour
             horizontalSpeed = CalculateMovement(Input.mousePosition);
         }
 #elif UNITY_IOS || UNITY_ANDROID
-        
+
 
         //check for input type
         if (inputType == INPUT_TYPE.Accelerometer)
@@ -98,15 +103,16 @@ public class Move_Player : MonoBehaviour
             //move based on accelerometer
             //Debug.Log(Input.acceleration.x.ToString());
             horizontalSpeed = Input.acceleration.x * dodgeSpeed * Time.deltaTime;
-        }
 
-        //use the real android touch system
-        if (Input.touchCount > 0)
-        {
-            Touch firstTouch = Input.touches[0];
 
-            //check for jumping or crouching
-            SwipeJumpOrCrouch(firstTouch);
+            //use the real android touch system
+            if (Input.touchCount > 0)
+            {
+                Touch firstTouch = Input.touches[0];
+
+                //check for jumping or crouching
+                SwipeJumpOrCrouch(firstTouch);
+            }
         }
 #endif
     }
@@ -192,11 +198,11 @@ public class Move_Player : MonoBehaviour
     IEnumerator ResetAnimationState()
     {
         yield return new WaitForSeconds(1f);
-        
+
         anim.SetBool(runHash, true);
         anim.SetBool(jumpHash, false);
         anim.SetBool(crouchHash, false);
-        
+
     }
 
     /// <summary>
@@ -238,10 +244,41 @@ public class Move_Player : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// updates the physics components
+    /// </summary>
     private void FixedUpdate()
     {
         //Apply the auto-moving and movement forces
         rb.AddForce(horizontalSpeed, 0, 0);
         forwardMovement = rb.velocity;
+    }
+
+    /// <summary>
+    /// check if there has been a collision with a pickup
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "GhostPickup")
+        {
+            Ghost();
+            other.gameObject.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// the ghost mode enabler
+    /// </summary>
+    /// <returns> duration of ghost mode </returns>
+    IEnumerator Ghost()
+    {
+        this.gameObject.GetComponent<MeshRenderer>().material = matGrey;
+        this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
+
+        yield return new WaitForSeconds(5f);
+
+        this.gameObject.GetComponent<MeshRenderer>().material = ethanGrey;
+        this.gameObject.GetComponent<CapsuleCollider>().enabled = true;
     }
 }
