@@ -12,6 +12,9 @@ public class LevelSpawner : MonoBehaviour
     public GameObject jumpObstaclePrefab;
     public GameObject crouchObstaclePrefab;
 
+    public GameObject ghostPowerup;
+    public Transform powerupSpawnRight, powerupSpawnLeft, powerupSpawnCenter;
+
     public Vector3 rotation = new Vector3();
 
     public bool spawnLeftTurn;
@@ -26,12 +29,17 @@ public class LevelSpawner : MonoBehaviour
         GameObject newSection = Instantiate(forwardTilePrefab, new Vector3(0, -1, 0), Quaternion.identity, this.transform);
         nextSpawnLocation = newSection.transform.Find("EndPoint").transform;
 
+        
+
         // make other sections
         for (int i = 0; i < 10; i++)
             SpawnNextTile();
     }
 
-
+    public void SpawnPowerups()
+    {
+        
+    }
 
     public void SpawnNextTile()
     {
@@ -50,6 +58,25 @@ public class LevelSpawner : MonoBehaviour
                 newSection = Instantiate(crouchObstaclePrefab, nextSpawnLocation.position, Quaternion.Euler(rotation), this.transform);
             }
             newSection = Instantiate(forwardTilePrefab, nextSpawnLocation.position, Quaternion.Euler(rotation), this.transform);
+
+            powerupSpawnCenter = newSection.transform.Find("PowerupSpawnCenter");
+            powerupSpawnRight = newSection.transform.Find("PowerupSpawnRight");
+            powerupSpawnLeft = newSection.transform.Find("PowerupSpawnLeft");
+
+            int randomRoll = Random.Range(0, 30);
+            if (randomRoll < 10)
+            {
+                GameObject newGhost = Instantiate(ghostPowerup, powerupSpawnLeft.position, Quaternion.identity, newSection.transform);
+            }
+            if (randomRoll > 10 && randomRoll < 20)
+            {
+                GameObject newGhost = Instantiate(ghostPowerup, powerupSpawnCenter.position, Quaternion.identity, newSection.transform);
+            }
+            if (randomRoll > 20)
+            {
+                GameObject newGhost = Instantiate(ghostPowerup, powerupSpawnRight.position, Quaternion.identity,newSection.transform);
+            }
+
         }
         else if (randomChoice < 90)
         {

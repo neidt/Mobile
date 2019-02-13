@@ -1301,6 +1301,11 @@ MonoBehaviour:
     type: 3}
   crouchObstaclePrefab: {fileID: 7838945690067307459, guid: 8acbfb8b7266a6e428184a9a323e90b9,
     type: 3}
+  ghostPowerup: {fileID: 5462821755808010649, guid: 798dae96e91c06f4d98e2ead05597720,
+    type: 3}
+  powerupSpawnRight: {fileID: 0}
+  powerupSpawnLeft: {fileID: 0}
+  powerupSpawnCenter: {fileID: 0}
   rotation: {x: 0, y: 0, z: 0}
   spawnLeftTurn: 0
 --- !u!1 &534669902
