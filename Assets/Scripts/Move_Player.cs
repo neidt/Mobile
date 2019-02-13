@@ -90,15 +90,14 @@ public class Move_Player : MonoBehaviour
             horizontalSpeed = CalculateMovement(Input.mousePosition);
         }
 #elif UNITY_IOS || UNITY_ANDROID
-
-        //CheckIfGrounded(rb.position);
+        
 
         //check for input type
         if (inputType == INPUT_TYPE.Accelerometer)
         {
             //move based on accelerometer
             //Debug.Log(Input.acceleration.x.ToString());
-            horizontalSpeed = Input.acceleration.x * dodgeSpeed;
+            horizontalSpeed = Input.acceleration.x * dodgeSpeed * Time.deltaTime;
         }
 
         //use the real android touch system
@@ -184,7 +183,6 @@ public class Move_Player : MonoBehaviour
         anim.SetBool(jumpHash, true);
         isGrounded = false;
         yield return new WaitForSeconds(2f);
-        this.gameObject.transform.rotation = new Quaternion(0,0,0,1);
     }
 
     /// <summary>
