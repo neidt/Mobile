@@ -9,7 +9,7 @@ public class QuitAndPause : MonoBehaviour
 
     public void PauseGame()
     {
-        pauseMenu.gameObject.SetActive(true);
+        pauseMenu.gameObject.GetComponent<Canvas>().enabled = true;
         Time.timeScale = 0.0f;
     }
 

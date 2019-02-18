@@ -1,4 +1,5 @@
-﻿using System;
+﻿//@author natalie eidt
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,6 +46,9 @@ public class Move_Player : MonoBehaviour
     int crouchHash = Animator.StringToHash("isCrouching");
     int runHash = Animator.StringToHash("isRunning");
 
+
+
+
     /// <summary>
     /// How much force should be applied in the horizontal axis
     /// </summary>
@@ -60,7 +64,7 @@ public class Move_Player : MonoBehaviour
     public float swipeMove = 2f;
 
     [Tooltip("How far player must swipe to do action (in pixel space)")]
-    public float minSwipeDistance = 1f;
+    public float minSwipeDistance = .7f;
 
     /// <summary>
     /// stores the starting pos of the mobile touch event
@@ -90,16 +94,15 @@ public class Move_Player : MonoBehaviour
             horizontalSpeed = CalculateMovement(Input.mousePosition);
         }
 #elif UNITY_IOS || UNITY_ANDROID
-        
 
         //check for input type
         if (inputType == INPUT_TYPE.Accelerometer)
         {
             //move based on accelerometer
-            //Debug.Log(Input.acceleration.x.ToString());
+            Debug.Log(Input.acceleration.x.ToString());
             horizontalSpeed = Input.acceleration.x * dodgeSpeed * Time.deltaTime;
-        }
 
+        }
         //use the real android touch system
         if (Input.touchCount > 0)
         {
@@ -108,6 +111,7 @@ public class Move_Player : MonoBehaviour
             //check for jumping or crouching
             SwipeJumpOrCrouch(firstTouch);
         }
+
 #endif
     }
 
@@ -117,6 +121,7 @@ public class Move_Player : MonoBehaviour
     /// <param name="touch"> the touch that will be used </param>
     void SwipeJumpOrCrouch(Touch touch)
     {
+
         //check if touch has just started
         if (touch.phase == TouchPhase.Began)
         {
@@ -192,11 +197,11 @@ public class Move_Player : MonoBehaviour
     IEnumerator ResetAnimationState()
     {
         yield return new WaitForSeconds(1f);
-        
+
         anim.SetBool(runHash, true);
         anim.SetBool(jumpHash, false);
         anim.SetBool(crouchHash, false);
-        
+
     }
 
     /// <summary>
@@ -241,7 +246,8 @@ public class Move_Player : MonoBehaviour
     private void FixedUpdate()
     {
         //Apply the auto-moving and movement forces
-        rb.AddForce(horizontalSpeed, 0, 0);
+        transform.Translate(new Vector3(horizontalSpeed * Time.deltaTime, 0, 0));
+        //rb.AddForce(horizontalSpeed, 0, 0);
         forwardMovement = rb.velocity;
     }
 }

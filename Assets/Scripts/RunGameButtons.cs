@@ -26,7 +26,7 @@ public class RunGameButtons : MonoBehaviour
 
     public void Resume()
     {
-        pauseMenu.gameObject.SetActive(false);
+        pauseMenu.gameObject.GetComponent<Canvas>().enabled = false;
         Time.timeScale = 1f;
     }
 }
