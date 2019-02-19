@@ -15,6 +15,11 @@ public class PlayerCamera : MonoBehaviour
   /// </summary>
   private Vector3 rotation;
 
+  private void Update()
+  {
+    transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
+  }
+
   public void UpdateRotation(Vector3 direction)
   {
     if (direction == Vector3.left)

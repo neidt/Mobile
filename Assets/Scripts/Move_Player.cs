@@ -99,7 +99,6 @@ public class Move_Player : MonoBehaviour
         if (inputType == INPUT_TYPE.Accelerometer)
         {
             //move based on accelerometer
-            Debug.Log(Input.acceleration.x.ToString());
             horizontalSpeed = Input.acceleration.x * dodgeSpeed * Time.deltaTime;
 
         }
@@ -137,10 +136,12 @@ public class Move_Player : MonoBehaviour
             //calculate difference btwn start and end of touch
             float yDiff = touchEnd.y - touchStart.y;
 
-            if (Mathf.Abs(yDiff) < minSwipeDistance)
-            {
+            #region Brandon Added
+            float distance = Mathf.Abs(yDiff);
+
+            if (distance < Camera.main.pixelHeight / minSwipeDistance)
                 return;
-            }
+            #endregion
 
             //check if the player is on the ground
             CheckIfGrounded(rb.position);
@@ -171,6 +172,10 @@ public class Move_Player : MonoBehaviour
         anim.SetBool(runHash, false);
         anim.SetBool(crouchHash, true);
 
+        // Brandon added
+        anim.SetTrigger("StartCrouch");
+
+
         this.gameObject.GetComponent<CapsuleCollider>().height -= .6f;
         this.gameObject.GetComponent<CapsuleCollider>().center = new Vector3(0, .6f, 0);
         yield return new WaitForSeconds(1f);
@@ -184,10 +189,13 @@ public class Move_Player : MonoBehaviour
     /// <returns> waits for 2 seconds </returns>
     IEnumerator JumpUp()
     {
+        // brandon Added
+        anim.SetTrigger("StartJump");
+
         anim.SetBool(runHash, false);
         anim.SetBool(jumpHash, true);
         isGrounded = false;
-        yield return new WaitForSeconds(2f);
+        yield return null;
     }
 
     /// <summary>

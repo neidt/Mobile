@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/**
+ * By Brandon Laing (JCCC)
+ * this will control that hats system
+ */
 public class HatsButtons : MonoBehaviour
 {
   public GameObject greenHat, purpleHat;
@@ -22,6 +25,9 @@ public class HatsButtons : MonoBehaviour
       purpleHatBought = true;
   }
 
+  /// <summary>
+  /// Spends score to buy a green hat and puts it on the players head
+  /// </summary>
   public void BuyGreenHat()
   {
     if (greenHatBought)
@@ -43,6 +49,9 @@ public class HatsButtons : MonoBehaviour
     }
   }
 
+  /// <summary>
+  /// Spends score to buy a purple hat and puts it on the players head
+  /// </summary>
   public void BuyPurpleHat()
   {
     if (purpleHatBought)
@@ -64,6 +73,9 @@ public class HatsButtons : MonoBehaviour
     }
   }
 
+  /// <summary>
+  /// Resets the playerprefs and unbuys all hats
+  /// </summary>
   public void ResetPlayerPrefs()
   {
     PlayerPrefs.SetInt("GreenBought", 0);

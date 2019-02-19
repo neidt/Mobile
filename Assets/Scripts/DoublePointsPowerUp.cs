@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/**
+ * By Brandon Laing (JCCC)
+ * This will check if they player runs into a double points powerup and added the effect to them.
+ */
 
 public class DoublePointsPowerUp : MonoBehaviour
 {
