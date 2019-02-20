@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Natalie Eidt
+/// </summary>
 public class GhostPowerup : MonoBehaviour
 {
     /// <summary>
@@ -19,6 +21,11 @@ public class GhostPowerup : MonoBehaviour
     /// the duration that the mode lasts
     /// </summary>
     public float ghostDuration = 5f;
+
+    /// <summary>
+    /// checks if the powerup is in contact with the player
+    /// </summary>
+    /// <param name="collision"> the collision from the player </param>
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Player")

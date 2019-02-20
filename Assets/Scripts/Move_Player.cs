@@ -45,14 +45,11 @@ public class Move_Player : MonoBehaviour
     int jumpHash = Animator.StringToHash("isJumping");
     int crouchHash = Animator.StringToHash("isCrouching");
     int runHash = Animator.StringToHash("isRunning");
-
-
-
-
+    
     /// <summary>
     /// How much force should be applied in the horizontal axis
     /// </summary>
-    float horizontalSpeed;
+    private float horizontalSpeed;
 
     /// <summary>
     /// the stored forward velocity of the ball between frames
