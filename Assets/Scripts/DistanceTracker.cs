@@ -77,17 +77,17 @@ public class DistanceTracker : MonoBehaviour
     {
         NewHighScoreCanvas.SetActive(!NewHighScoreCanvas.activeSelf);
 
-        #region Natalie Added
-        if (showedNewHighDistance)
-        {
-            UpgradeCanvas.GetComponent<Canvas>().enabled = true;
-        }
-        else
-        {
-            UpgradeCanvas.GetComponent<Canvas>().enabled = false;
-        }
+        //#region Natalie Added
+        //if (showedNewHighDistance)
+        //{
+        //    UpgradeCanvas.GetComponent<Canvas>().enabled = true;
+        //}
+        //else
+        //{
+        //    UpgradeCanvas.GetComponent<Canvas>().enabled = false;
+        //}
 
-        #endregion
+        //#endregion
 
         if (showedNewHighDistance == false)
             Invoke("DisplayedNewHighScore", 5F);

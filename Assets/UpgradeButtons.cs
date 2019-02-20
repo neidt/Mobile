@@ -7,24 +7,14 @@ using UnityEngine;
 /// </summary>
 public class UpgradeButtons : MonoBehaviour
 {
-    /// <summary>
-    /// reference to the ghost powerup script
-    /// </summary>
-    public GhostPowerup ghostScript;
-
-    /// <summary>
-    /// reference to the double points scripts
-    /// </summary>
-    public DoublePointsEffect doublePointsScript;
-
     public void UpgradeGhostDuration()
     {
-        ghostScript.ghostDuration += 2f;
+        GhostPowerup.ghostUpgradeDuration += 2f;
     }
 
     public void UpgradeDoublePointsDuration()
     {
-        doublePointsScript.duration += 2f;
+       DoublePointsEffect.upgradeDuration += 2f;
     }
 
 }

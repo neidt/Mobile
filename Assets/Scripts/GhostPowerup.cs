@@ -23,6 +23,12 @@ public class GhostPowerup : MonoBehaviour
     public float ghostDuration = 5f;
 
     /// <summary>
+    /// the time to add to the duration of the powerup
+    /// </summary>
+    public static float ghostUpgradeDuration = 0;
+
+
+    /// <summary>
     /// checks if the powerup is in contact with the player
     /// </summary>
     /// <param name="collision"> the collision from the player </param>
@@ -44,7 +50,7 @@ public class GhostPowerup : MonoBehaviour
         playerObj.GetComponent<Rigidbody>().useGravity = false;
         playerObj.GetComponentInChildren<SkinnedMeshRenderer>().material = ghostMat;
 
-        yield return new WaitForSecondsRealtime(ghostDuration);
+        yield return new WaitForSecondsRealtime(ghostDuration + ghostUpgradeDuration);
 
         playerObj.GetComponent<CapsuleCollider>().enabled = true;
         playerObj.GetComponent<Rigidbody>().useGravity = true;

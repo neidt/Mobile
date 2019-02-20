@@ -24,12 +24,12 @@ public class RunGameButtons : MonoBehaviour
 
     public void UpgradeGhostDuration()
     {
-        ghostScript.ghostDuration += 2f;
+        GhostPowerup.ghostUpgradeDuration += 2f;
     }
 
     public void UpgradeDoublePointsDuration()
     {
-        doublePointsScript.duration += 2f;
+        DoublePointsEffect.upgradeDuration += 2f;
     }
 
     public void Run()
